@@ -14,17 +14,14 @@ namespace VideoStore
 
         public string Statement()
         {
-            String result = "Rental Record for " + Name + "\n";
-
-            result += String.Join("\n", Rentals.Select(rental => rental.ToString()));
             var totalAmount = Rentals.Select(Rental => Rental.GetPrice()).Sum();
-            var frequentRenterPoints = Rentals.Select(rental => rental.GetFrequentRenterPoints()).Sum();
+            var frequentRenterPointsTotal = Rentals.Select(rental => rental.GetFrequentRenterPoints()).Sum();
+            var lineItemSummaries = String.Join("\n", Rentals.Select(rental => rental.ToString()));
 
-            result += "\nYou owed " + totalAmount + "\n";
-            result += "You earned " + frequentRenterPoints + " frequent renter points\n";
-
-
-            return result;
+            return $"Rental Record for {Name}\n" +
+                $"{ lineItemSummaries}\n" +
+                $"You owed {totalAmount}\n" +
+                $"You earned {frequentRenterPointsTotal} frequent renter points\n";
         }
 
 
