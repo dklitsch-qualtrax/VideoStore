@@ -45,7 +45,7 @@ namespace VideoStore
                         && rental.DaysRented > 1)
                     frequentRenterPoints++;
 
-                result += "\t" + rental.Movie.GetTitle() + "\t"
+                result += "\t" + rental.Movie.Title+ "\t"
                                     + thisAmount + "\n";
                 totalAmount += thisAmount;
 

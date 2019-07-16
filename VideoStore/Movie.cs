@@ -15,21 +15,6 @@
             this.PriceCode = priceCode;
         }
 
-        //public int GetPriceCode()
-        //{
-        //    return priceCode;
-        //}
-
-        public void SetPriceCode(int code)
-        {
-            PriceCode = code;
-        }
-
-        public string GetTitle()
-        {
-            return Title;
-        }
-
         public double GetPrice(double daysRented)
         {
             var price = 0.0;
