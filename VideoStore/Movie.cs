@@ -6,29 +6,51 @@
         public const int REGULAR = 0;
         public const int NEW_RELEASE = 1;
 
-        private string title;
-        private int priceCode;
+        public string Title { get; set; }
+        public int PriceCode { get; set; }
 
         public Movie(string title, int priceCode)
         {
-            this.title = title;
-            this.priceCode = priceCode;
+            this.Title = title;
+            this.PriceCode = priceCode;
         }
 
-        public int GetPriceCode()
-        {
-            return priceCode;
-        }
+        //public int GetPriceCode()
+        //{
+        //    return priceCode;
+        //}
 
         public void SetPriceCode(int code)
         {
-            priceCode = code;
+            PriceCode = code;
         }
 
         public string GetTitle()
         {
-            return title;
+            return Title;
         }
 
+        public double GetPrice(double daysRented)
+        {
+            var price = 0.0;
+            switch (PriceCode)
+            { 
+                case Movie.REGULAR:
+                    price += 2;
+                if (daysRented > 2)
+                        price += (daysRented - 2) * 1.5;
+                break;
+            case Movie.NEW_RELEASE:
+                    price += daysRented * 3;
+                break;
+            case Movie.CHILDRENS:
+                    price += 1.5;
+                if (daysRented > 3)
+                        price += (daysRented - 3) * 1.5;
+                break;
+            }
+
+            return price;
+        }
     }
 }
