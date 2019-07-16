@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace VideoStore
 {
@@ -14,30 +15,15 @@ namespace VideoStore
         public string Statement()
         {
             double totalAmount = 0;
-            int frequentRenterPoints = 0;
             String result = "Rental Record for " + Name + "\n";
+            var frequentRenterPoints = 0.0;
+
+            //var rentalTotal = Rentals.Select(Rental => Rental.GetPrice());
+            //var frequentRenterPoints = Rentals.Count();
 
             foreach (var rental in Rentals)
             {
-                double thisAmount = 0;
-
-                // determines the amount for each line
-                switch (rental.Movie.PriceCode)
-                {
-                    case Movie.REGULAR:
-                        thisAmount += 2;
-                        if (rental.DaysRented > 2)
-                            thisAmount += (rental.DaysRented - 2) * 1.5;
-                        break;
-                    case Movie.NEW_RELEASE:
-                        thisAmount += rental.DaysRented * 3;
-                        break;
-                    case Movie.CHILDRENS:
-                        thisAmount += 1.5;
-                        if (rental.DaysRented > 3)
-                            thisAmount += (rental.DaysRented - 3) * 1.5;
-                        break;
-                }
+                double rentalPrice = rental.GetPrice();
 
                 frequentRenterPoints++;
 
@@ -46,8 +32,8 @@ namespace VideoStore
                     frequentRenterPoints++;
 
                 result += "\t" + rental.Movie.Title+ "\t"
-                                    + thisAmount + "\n";
-                totalAmount += thisAmount;
+                                    + rentalPrice + "\n";
+                totalAmount += rentalPrice;
 
             }
 

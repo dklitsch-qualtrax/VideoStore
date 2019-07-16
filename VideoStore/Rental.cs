@@ -10,5 +10,10 @@
 
         public Movie Movie { get; set; }
         public int DaysRented { get; set; }
+
+        public double GetPrice()
+        {
+            return Movie.GetPrice(DaysRented);
+        }
     }
 }
