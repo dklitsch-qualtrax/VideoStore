@@ -14,7 +14,7 @@ namespace VideoStore
 
         public string Statement()
         {
-            var totalAmount = Rentals.Select(Rental => Rental.GetPrice()).Sum();
+            var totalAmount = Rentals.Select(rental => rental.GetPrice()).Sum();
             var frequentRenterPointsTotal = Rentals.Select(rental => rental.GetFrequentRenterPoints()).Sum();
             var lineItemSummaries = String.Join("\n", Rentals);
 
