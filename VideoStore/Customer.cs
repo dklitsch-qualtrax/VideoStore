@@ -7,17 +7,13 @@ namespace VideoStore
     {
         public Customer(string name)
         {
-            this.name = name;
-        }
-
-        public void AddRental(Rental rental)
-        {
-            rentals.Add(rental);
+            this.Name = name;
+            this.Rentals = new List<Rental>();
         }
 
         public string GetName()
         {
-            return name;
+            return Name;
         }
 
         public string Statement()
@@ -26,7 +22,7 @@ namespace VideoStore
             int frequentRenterPoints = 0;
             String result = "Rental Record for " + GetName() + "\n";
 
-            foreach (var rental in rentals)
+            foreach (var rental in Rentals)
             {
                 double thisAmount = 0;
 
@@ -68,7 +64,7 @@ namespace VideoStore
         }
 
 
-        private String name;
-        private List<Rental> rentals = new List<Rental>();
+        public String Name { get; set; }
+        public List<Rental> Rentals { get; set;}
     }
 }
