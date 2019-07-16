@@ -16,7 +16,7 @@ namespace VideoStore
         {
             double totalAmount = 0;
             String result = "Rental Record for " + Name + "\n";
-            var frequentRenterPoints = 0.0;
+            var frequentRenterPoints = Rentals.Select(rental => rental.GetFrequentRenterPoints()).Sum();
 
             //var rentalTotal = Rentals.Select(Rental => Rental.GetPrice());
             //var frequentRenterPoints = Rentals.Count();
@@ -24,17 +24,9 @@ namespace VideoStore
             foreach (var rental in Rentals)
             {
                 double rentalPrice = rental.GetPrice();
-
-                frequentRenterPoints++;
-
-                if (rental.Movie.PriceCode == Movie.NEW_RELEASE
-                        && rental.DaysRented > 1)
-                    frequentRenterPoints++;
-
                 result += "\t" + rental.Movie.Title+ "\t"
                                     + rentalPrice + "\n";
                 totalAmount += rentalPrice;
-
             }
 
             result += "You owed " + totalAmount + "\n";
