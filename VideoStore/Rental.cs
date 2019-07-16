@@ -23,7 +23,7 @@
 
         public override string ToString()
         {
-            return "\t" + Movie.Title + "\t" + GetPrice();
+            return $"\t{Movie.Title}\t{GetPrice()}";
         }
     }
 }
