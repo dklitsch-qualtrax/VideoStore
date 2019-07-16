@@ -16,7 +16,7 @@ namespace VideoStore
         {
             var totalAmount = Rentals.Select(Rental => Rental.GetPrice()).Sum();
             var frequentRenterPointsTotal = Rentals.Select(rental => rental.GetFrequentRenterPoints()).Sum();
-            var lineItemSummaries = String.Join("\n", Rentals.Select(rental => rental.ToString()));
+            var lineItemSummaries = String.Join("\n", Rentals);
 
             return $"Rental Record for {Name}\n" +
                 $"{ lineItemSummaries}\n" +
