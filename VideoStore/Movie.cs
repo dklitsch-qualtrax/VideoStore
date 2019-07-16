@@ -1,4 +1,6 @@
-﻿namespace VideoStore
+﻿using System;
+
+namespace VideoStore
 {
     public class Movie
     {
@@ -17,24 +19,40 @@
 
         public double GetPrice(double daysRented)
         {
-            var price = 0.0;
             switch (PriceCode)
             { 
                 case Movie.REGULAR:
-                    price += 2;
-                if (daysRented > 2)
-                        price += (daysRented - 2) * 1.5;
-                break;
-            case Movie.NEW_RELEASE:
-                    price += daysRented * 3;
-                break;
-            case Movie.CHILDRENS:
-                    price += 1.5;
-                if (daysRented > 3)
-                        price += (daysRented - 3) * 1.5;
-                break;
-            }
+                    return CalculateRegularPrice(daysRented);
 
+                case Movie.NEW_RELEASE:
+                    return CalculateNewReleasePrice(daysRented);
+
+                case Movie.CHILDRENS:
+                    return CalculateChildrensMoviePrice(daysRented);
+
+                default:
+                    throw new Exception("Unknown Price Code");
+            }
+        }
+
+        public double CalculateRegularPrice(double daysRented)
+        {
+            var price = 2.0;
+            if (daysRented > 2)
+                price += (daysRented - 2) * 1.5;
+            return price;
+        }
+
+        public double CalculateNewReleasePrice(double daysRented)
+        {
+            return (daysRented * 3);
+        }
+
+        public double CalculateChildrensMoviePrice(double daysRented)
+        {
+            var price = 1.5;
+            if (daysRented > 3)
+                price += (daysRented - 3) * 1.5;
             return price;
         }
     }
