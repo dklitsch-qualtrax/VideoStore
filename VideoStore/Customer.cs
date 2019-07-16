@@ -12,10 +12,13 @@ namespace VideoStore
             this.Rentals = new List<Rental>();
         }
 
+        public double GetRentalPrice(Rental rental) => rental.GetPrice();
+        public double GetFrequentRenterPoints(Rental rental) => rental.GetFrequentRenterPoints();
+
         public string Statement()
         {
-            var totalAmount = Rentals.Select(rental => rental.GetPrice()).Sum();
-            var frequentRenterPointsTotal = Rentals.Select(rental => rental.GetFrequentRenterPoints()).Sum();
+            var totalAmount = Rentals.Select(GetRentalPrice).Sum();
+            var frequentRenterPointsTotal = Rentals.Select(GetFrequentRenterPoints).Sum();
             var lineItemSummaries = String.Join("\n", Rentals);
 
             return $"Rental Record for {Name}\n" +
