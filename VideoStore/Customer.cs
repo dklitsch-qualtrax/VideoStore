@@ -11,11 +11,6 @@ namespace VideoStore
             this.Rentals = new List<Rental>();
         }
 
-        //public string GetName()
-        //{
-        //    return Name;
-        //}
-
         public string Statement()
         {
             double totalAmount = 0;
@@ -31,23 +26,23 @@ namespace VideoStore
                 {
                     case Movie.REGULAR:
                         thisAmount += 2;
-                        if (rental.GetDaysRented() > 2)
-                            thisAmount += (rental.GetDaysRented() - 2) * 1.5;
+                        if (rental.DaysRented > 2)
+                            thisAmount += (rental.DaysRented - 2) * 1.5;
                         break;
                     case Movie.NEW_RELEASE:
-                        thisAmount += rental.GetDaysRented() * 3;
+                        thisAmount += rental.DaysRented * 3;
                         break;
                     case Movie.CHILDRENS:
                         thisAmount += 1.5;
-                        if (rental.GetDaysRented() > 3)
-                            thisAmount += (rental.GetDaysRented() - 3) * 1.5;
+                        if (rental.DaysRented > 3)
+                            thisAmount += (rental.DaysRented - 3) * 1.5;
                         break;
                 }
 
                 frequentRenterPoints++;
 
                 if (rental.GetMovie().GetPriceCode() == Movie.NEW_RELEASE
-                        && rental.GetDaysRented() > 1)
+                        && rental.DaysRented > 1)
                     frequentRenterPoints++;
 
                 result += "\t" + rental.GetMovie().GetTitle() + "\t"

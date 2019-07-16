@@ -4,21 +4,21 @@
     {
         public Rental(Movie movie, int daysRented)
         {
-            this.movie = movie;
-            this.daysRented = daysRented;
+            this.Movie = movie;
+            this.DaysRented = daysRented;
         }
 
-        public int GetDaysRented()
-        {
-            return daysRented;
-        }
+        //public int GetDaysRented()
+        //{
+        //    return DaysRented;
+        //}
 
         public Movie GetMovie()
         {
-            return movie;
+            return Movie;
         }
 
-        private Movie movie;
-        private int daysRented;
+        public Movie Movie { get; set; }
+        public int DaysRented { get; set; }
     }
 }
