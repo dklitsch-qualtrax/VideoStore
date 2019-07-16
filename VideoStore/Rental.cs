@@ -1,4 +1,6 @@
-﻿namespace VideoStore
+﻿using static VideoStore.Constants.PriceCodes;
+
+namespace VideoStore
 {
     public class Rental
     {
@@ -18,7 +20,7 @@
 
         public int GetFrequentRenterPoints()
         {
-            return (Movie.PriceCode == Movie.NEW_RELEASE && DaysRented > 1) ? 2 : 1;
+            return (Movie.PriceCode == NEW_RELEASE && DaysRented > 1) ? 2 : 1;
         }
 
         public override string ToString()
