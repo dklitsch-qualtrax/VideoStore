@@ -20,5 +20,10 @@
         {
             return (Movie.PriceCode == Movie.NEW_RELEASE && DaysRented > 1) ? 2 : 1;
         }
+
+        public override string ToString()
+        {
+            return "\t" + Movie.Title + "\t" + GetPrice();
+        }
     }
 }

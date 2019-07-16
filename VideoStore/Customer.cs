@@ -14,22 +14,13 @@ namespace VideoStore
 
         public string Statement()
         {
-            double totalAmount = 0;
             String result = "Rental Record for " + Name + "\n";
+
+            result += String.Join("\n", Rentals.Select(rental => rental.ToString()));
+            var totalAmount = Rentals.Select(Rental => Rental.GetPrice()).Sum();
             var frequentRenterPoints = Rentals.Select(rental => rental.GetFrequentRenterPoints()).Sum();
 
-            //var rentalTotal = Rentals.Select(Rental => Rental.GetPrice());
-            //var frequentRenterPoints = Rentals.Count();
-
-            foreach (var rental in Rentals)
-            {
-                double rentalPrice = rental.GetPrice();
-                result += "\t" + rental.Movie.Title+ "\t"
-                                    + rentalPrice + "\n";
-                totalAmount += rentalPrice;
-            }
-
-            result += "You owed " + totalAmount + "\n";
+            result += "\nYou owed " + totalAmount + "\n";
             result += "You earned " + frequentRenterPoints + " frequent renter points\n";
 
 

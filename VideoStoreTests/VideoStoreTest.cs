@@ -26,7 +26,8 @@ namespace VideoStoreTests
         {
             customer.Rentals.Add(new Rental(new Movie("The Cell", Movie.NEW_RELEASE), 3));
             customer.Rentals.Add(new Rental(new Movie("The Tigger Movie", Movie.NEW_RELEASE), 3));
-            Assert.AreEqual("Rental Record for Fred\n\tThe Cell\t9\n\tThe Tigger Movie\t9\nYou owed 18\nYou earned 4 frequent renter points\n", customer.Statement());
+            var statement = customer.Statement();
+            Assert.AreEqual("Rental Record for Fred\n\tThe Cell\t9\n\tThe Tigger Movie\t9\nYou owed 18\nYou earned 4 frequent renter points\n", statement);
         }
 
         [TestMethod]
