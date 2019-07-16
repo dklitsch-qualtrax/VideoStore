@@ -11,16 +11,16 @@ namespace VideoStore
             this.Rentals = new List<Rental>();
         }
 
-        public string GetName()
-        {
-            return Name;
-        }
+        //public string GetName()
+        //{
+        //    return Name;
+        //}
 
         public string Statement()
         {
             double totalAmount = 0;
             int frequentRenterPoints = 0;
-            String result = "Rental Record for " + GetName() + "\n";
+            String result = "Rental Record for " + Name + "\n";
 
             foreach (var rental in Rentals)
             {
