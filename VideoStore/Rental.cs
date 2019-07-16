@@ -8,15 +8,10 @@
             this.DaysRented = daysRented;
         }
 
-        //public int GetDaysRented()
+        //public Movie GetMovie()
         //{
-        //    return DaysRented;
+        //    return Movie;
         //}
-
-        public Movie GetMovie()
-        {
-            return Movie;
-        }
 
         public Movie Movie { get; set; }
         public int DaysRented { get; set; }

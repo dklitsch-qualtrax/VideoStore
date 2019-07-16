@@ -22,7 +22,7 @@ namespace VideoStore
                 double thisAmount = 0;
 
                 // determines the amount for each line
-                switch (rental.GetMovie().GetPriceCode())
+                switch (rental.Movie.GetPriceCode())
                 {
                     case Movie.REGULAR:
                         thisAmount += 2;
@@ -41,11 +41,11 @@ namespace VideoStore
 
                 frequentRenterPoints++;
 
-                if (rental.GetMovie().GetPriceCode() == Movie.NEW_RELEASE
+                if (rental.Movie.GetPriceCode() == Movie.NEW_RELEASE
                         && rental.DaysRented > 1)
                     frequentRenterPoints++;
 
-                result += "\t" + rental.GetMovie().GetTitle() + "\t"
+                result += "\t" + rental.Movie.GetTitle() + "\t"
                                     + thisAmount + "\n";
                 totalAmount += thisAmount;
 
